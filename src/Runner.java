@@ -14,7 +14,10 @@ public class Runner implements KeyListener {
 	int height = 20;
 	String text = "<html>";
 	String newText = "<html>";
-
+	int ypos = 600;
+	String userInput;
+	Parser p =new Parser();
+	String response="";
 	public static void main(String[] args) {
 		Runner r = new Runner();
 		r.setup();
@@ -24,10 +27,10 @@ public class Runner implements KeyListener {
 		jFrame.setDefaultCloseOperation(jFrame.EXIT_ON_CLOSE);
 		jFrame.add(jPanel);
 		jPanel.add(jTextField);
-		jTextField.setBounds(15, 650, 370, 20);
+		jTextField.setBounds(15, 625, 370, 20);
 		jPanel.setLayout(null);
 		jPanel.add(jLabel);
-		jLabel.setBounds(15, 600, 370, height);
+		jLabel.setBounds(15, ypos, 370, height);
 		jFrame.setSize(400, 700);
 		jLabel.setText("Welcome to the game.");
 		jFrame.setVisible(true);
@@ -52,14 +55,18 @@ public class Runner implements KeyListener {
 	public void keyPressed(KeyEvent e) {
 		if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 			text += jLabel.getText();
-			text += "<br>"+jTextField.getText();
-			height += 20;
-			jLabel.setBounds(15, 500, 370, height);
-			text += "</html>";
-			newText=text;
-			text="";
+			userInput=jTextField.getText();
+			String[]input=userInput.split(" ");  
+			response=p.parse(input);
+			text += "<br>" + ">" + jTextField.getText()+"<br>"+response;
+			height += 40;
+			ypos -= 40;
+			jLabel.setBounds(15, ypos, 370, height);
+			newText = text;
+			text = "";
 			jLabel.setText(newText);
-			newText="";
+			jLabel.repaint();
+			System.out.println(jLabel.getText());
 			jTextField.setText("");
 		}
 	}
