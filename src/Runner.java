@@ -16,8 +16,9 @@ public class Runner implements KeyListener {
 	String newText = "<html>";
 	int ypos = 600;
 	String userInput;
-	Parser p =new Parser();
-	String response="";
+	Parser p = new Parser();
+	String response = "";
+
 	public static void main(String[] args) {
 		Runner r = new Runner();
 		r.setup();
@@ -32,17 +33,9 @@ public class Runner implements KeyListener {
 		jPanel.add(jLabel);
 		jLabel.setBounds(15, ypos, 370, height);
 		jFrame.setSize(400, 700);
-		jLabel.setText("Welcome to the game.");
+		jLabel.setText("Welcome to the game. What is your name?");
 		jFrame.setVisible(true);
 		jTextField.addKeyListener(this);
-		// for (int i = 0; i < 2; i++) {
-		// text += jLabel.getText();
-		// text += "<br>new stuff";
-		// height += 20;
-		// jLabel.setBounds(15, 500, 370, height);
-		// }
-		// text += "</html>";
-		// jLabel.setText(text);
 	}
 
 	@Override
@@ -55,10 +48,10 @@ public class Runner implements KeyListener {
 	public void keyPressed(KeyEvent e) {
 		if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 			text += jLabel.getText();
-			userInput=jTextField.getText();
-			String[]input=userInput.split(" ");  
-			response=p.parse(input);
-			text += "<br>" + ">" + jTextField.getText()+"<br>"+response;
+			userInput = jTextField.getText();
+			String[] input = userInput.split(" ");
+			response = p.parse(input);
+			text += "<br>" + ">" + jTextField.getText() + "<br>" + response;
 			height += 40;
 			ypos -= 40;
 			jLabel.setBounds(15, ypos, 370, height);
@@ -76,4 +69,5 @@ public class Runner implements KeyListener {
 		// TODO Auto-generated method stub
 
 	}
+
 }
