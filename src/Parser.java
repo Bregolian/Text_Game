@@ -12,7 +12,7 @@ public class Parser {
 		if (isFirst) {
 			inventory.setName(a[0]);
 			isFirst = false;
-			return "Ok, " + a[0];
+			return "Ok, " + a[0] + ".";
 		} else {
 			if (a[0].equals("i") || a[0].equals("inventory")) {
 				output = "In your inventory you have " + inventory.getInventory() + inventory.getMoney() + " gold pieces.";
