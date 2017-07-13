@@ -16,8 +16,10 @@ public class Runner implements KeyListener {
 	String newText = "<html>";
 	int ypos = 600;
 	String userInput;
-	Parser p = new Parser();
+	Parser p;
 	String response = "";
+	Player player;
+	Map map = new Map();
 
 	public static void main(String[] args) {
 		Runner r = new Runner();
@@ -36,6 +38,9 @@ public class Runner implements KeyListener {
 		jLabel.setText("Welcome to the game. What is your name?");
 		jFrame.setVisible(true);
 		jTextField.addKeyListener(this);
+		map.setUp();
+		player = new Player(map.altar);
+		p = new Parser(player);
 	}
 
 	@Override

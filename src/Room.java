@@ -1,14 +1,13 @@
 
 public class Room {
-	Room castle = new Room("Castle", null, null, null, null, new String[] { "Sword" });
 	String name;
-	String north;
-	String east;
-	String south;
-	String west;
+	Room north;
+	Room east;
+	Room south;
+	Room west;
 	String[] roomInv = new String[15];
 
-	public Room(String Name, String North, String East, String South, String West, String[] RoomInv) {
+	public Room(String Name, Room North, Room East, Room South, Room West, String[] RoomInv) {
 		name = Name;
 		north = North;
 		east = East;
@@ -16,4 +15,25 @@ public class Room {
 		west = West;
 		roomInv = RoomInv;
 	}
+
+	public Room getNorth() {
+		return north;
+	}
+
+	public Room getEast() {
+		return east;
+	}
+
+	public Room getSouth() {
+		return south;
+	}
+
+	public Room getWest() {
+		return west;
+	}
+
+	public String readDesc() {
+		return name;
+	}
+
 }
