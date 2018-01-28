@@ -1,3 +1,4 @@
+import javax.tools.DocumentationTool.Location;
 
 public class Room {
 	String name;
@@ -6,7 +7,9 @@ public class Room {
 	Room south;
 	Room west;
 	String[] roomInv = new String[15];
-
+	
+	public Room() {}
+	
 	public Room(String Name, Room North, Room East, Room South, Room West, String[] RoomInv) {
 		name = Name;
 		north = North;
@@ -30,6 +33,14 @@ public class Room {
 
 	public Room getWest() {
 		return west;
+	}
+	public void setFields(String Name, Room North, Room East, Room South, Room West, String[] RoomInv) {
+		name = Name;
+		north = North;
+		east = East;
+		south = South;
+		west = West;
+		roomInv = RoomInv;
 	}
 
 	public String readDesc() {

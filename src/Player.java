@@ -12,9 +12,9 @@ public class Player {
 
 	public String move(String direction) {
 		if (direction.equalsIgnoreCase("north")) {
+			System.out.println(location.name);
 			if (location.getNorth() != null) {
 				location = location.getNorth();
-				System.out.println("hi");
 				return location.readDesc();
 			} else {
 				return "You can't go north.";
