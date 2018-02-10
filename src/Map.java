@@ -36,7 +36,7 @@ public class Map {
 		southeasternForest.setFields("Forest", northeasternForest, forestTempleEntry, easternCanyon, altar, new String[] { "Berries", "Squirrel", "Deer" });
 		westernCanyon.setFields("Canyon", southwesternForest, canyonTempleEntry, null, easternCanyon, new String[] {});
 		easternCanyon.setFields("Canyon", southeasternForest, westernCanyon, null, canyonTempleEntry, new String[] {});
-		altar.setFields("Altar of the Gods", nsRoadOne, southeasternForest, null, southwesternForest, new String[] {});
+		altar.setFields("In front of you there is a small marble platform with a raised marble slab. On the slab there appear to be 4 indents as if once 4 small objects had been there. Engraved in the stone it reads: \"Here is the true resting spot of the elemental artifacts.\"", nsRoadOne, southeasternForest, null, southwesternForest, new String[] {});
 		nsRoadOne.setFields("North/South King's Road", nsRoadTwo, northeasternForest, altar, northwesternForest, new String[] {});
 		nsRoadTwo.setFields("North/South King's Road", crossroads, easternField, nsRoadOne, westernField, new String[] {});
 		easternField.setFields("Field", null, westernField, northeasternForest, nsRoadTwo, new String[] { "Corn" });

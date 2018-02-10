@@ -43,10 +43,14 @@ public class Parser {
 		} else if (a[0].equalsIgnoreCase("Go") || a[0].equalsIgnoreCase("Travel")) {
 
 			return player.move(a[1]);
-		//} else if (a[0].equalsIgnoreCase("look")) {
-//
-		//	return location.readDesc();
-		}else {
+		} else if (a[0].equalsIgnoreCase("look")) {
+
+			return player.location.readDesc();
+		} else if (a[0].equalsIgnoreCase("search")) {
+
+			return player.location.readDesc();
+		}
+		else {
 			return "Come on do something understandable!";
 
 		}
