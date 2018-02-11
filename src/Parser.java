@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 public class Parser {
 	String output;
@@ -23,6 +24,37 @@ public class Parser {
 		return "Ok, " + input + ".";
 	}
 
+	String listToSingle(ArrayList<String> l) {
+		String converted = "";
+		for (int i = 0; i < l.size(); i++) {
+
+			if (i > 0) {
+				converted += ", ";
+			}
+			if ( i!=0 && l.size()-1 == i) {
+				converted += "and a ";
+			}
+			converted += l.get(i);
+
+		}
+		if (l.size() != 0) {
+			converted += ".";
+		}
+		return converted;
+	}
+
+	String arrayToString(String[] l) {
+		String converted = "";
+		for (int i = 0; i < l.length; i++) {
+			if (i > 0) {
+				converted += " ";
+			}
+			converted += l[i];
+
+		}
+		return converted;
+	}
+
 	String normalParse(String[] a) {
 		if (a[0].equals("i") || a[0].equals("inventory")) {
 			return "In your inventory you have " + inventory.getInventory() + inventory.getMoney() + " gold pieces.";
@@ -43,14 +75,24 @@ public class Parser {
 		} else if (a[0].equalsIgnoreCase("Go") || a[0].equalsIgnoreCase("Travel")) {
 
 			return player.move(a[1]);
+
+		} else if (a[0].equalsIgnoreCase("east") || a[0].equalsIgnoreCase("north") || a[0].equalsIgnoreCase("south")
+				|| a[0].equalsIgnoreCase("west")) {
+
+			return player.move(a[0]);
 		} else if (a[0].equalsIgnoreCase("look")) {
 
 			return player.location.readDesc();
 		} else if (a[0].equalsIgnoreCase("search")) {
-
-			return player.location.readDesc();
-		}
-		else {
+			ArrayList<String> found = player.location.search(player.location);
+			String foundString;
+			if (listToSingle(found).equals("")) {
+				return "You didn't find anything.";
+			} else {
+				foundString = "You found " + listToSingle(found);
+				return foundString;
+			}
+		} else {
 			return "Come on do something understandable!";
 
 		}

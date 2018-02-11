@@ -28,12 +28,10 @@ public class Map {
 	Room guardHouse=new Room();
 	
 	void setUp() {
-		northwesternForest.setFields("Forest", westernField, nsRoadOne, southwesternForest, forestTempleEntry,
-				new String[] { "Berries", "Squirrel", "Deer" });
-		southwesternForest.setFields("Forest", northwesternForest, altar, westernCanyon, forestTempleEntry, new String[] { "Berries", "Squirrel", "Deer" });
-		northeasternForest.setFields("Forest", easternField, forestTempleEntry, southeasternForest, nsRoadOne,
-				new String[] { "Berries", "Squirrel", "Deer" });
-		southeasternForest.setFields("Forest", northeasternForest, forestTempleEntry, easternCanyon, altar, new String[] { "Berries", "Squirrel", "Deer" });
+		northwesternForest.setFields("Forest!", westernField, nsRoadOne, southwesternForest, forestTempleEntry, new String[] { "berries", "squirrel", "deer","locked box" });
+		southwesternForest.setFields("Forest!!", northwesternForest, altar, westernCanyon, forestTempleEntry, new String[] { "berries", "squirrel", "deer" });
+		northeasternForest.setFields("Forest!!!", easternField, forestTempleEntry, southeasternForest, nsRoadOne, new String[] { "berries", "squirrel", "deer" });
+		southeasternForest.setFields("Forest!!!!", northeasternForest, forestTempleEntry, easternCanyon, altar, new String[] { "berries", "squirrel", "deer" });
 		westernCanyon.setFields("Canyon", southwesternForest, canyonTempleEntry, null, easternCanyon, new String[] {});
 		easternCanyon.setFields("Canyon", southeasternForest, westernCanyon, null, canyonTempleEntry, new String[] {});
 		altar.setFields("In front of you there is a small marble platform with a raised marble slab. On the slab there appear to be 4 indents as if once 4 small objects had been there. Engraved in the stone it reads: \"Here is the true resting spot of the elemental artifacts.\"", nsRoadOne, southeasternForest, null, southwesternForest, new String[] {});

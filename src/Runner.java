@@ -3,6 +3,8 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -12,7 +14,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
 
-public class Runner implements KeyListener {
+public class Runner implements KeyListener, WindowListener {
 	JFrame jFrame = new JFrame();
 	JPanel jPanel = new JPanel();
 	JTextField jTextField = new JTextField(20);
@@ -36,6 +38,7 @@ public class Runner implements KeyListener {
 	private void setup() {
 		GridBagConstraints c = new GridBagConstraints(0, 0, 1, 1, 0, 0, GridBagConstraints.NORTHWEST,
 				GridBagConstraints.NONE, new Insets(5, 2, 5, 2), 0, 0);
+		jFrame.addWindowListener(this);
 		jPanel.setLayout(new GridBagLayout());
 		jFrame.setDefaultCloseOperation(jFrame.EXIT_ON_CLOSE);
 		jTextArea.setText("Welcome to the game. What is your name?\n");
@@ -56,6 +59,7 @@ public class Runner implements KeyListener {
 		jFrame.setVisible(true);
 		jFrame.pack();
 		jTextField.addKeyListener(this);
+		jTextField.requestFocus();
 		map.setUp();
 		player = new Player(map.altar);
 		p = new Parser(player);
@@ -74,7 +78,7 @@ public class Runner implements KeyListener {
 			userInput = jTextField.getText();
 			String[] input = userInput.split(" ");
 			response = p.parse(input);
-			text += response + "\n";
+			text += p.arrayToString(input)+ "\n" + response + "\n";
 			height += 40;
 			ypos -= 40;
 			jTextArea.setBounds(15, ypos, 370, height);
@@ -93,6 +97,48 @@ public class Runner implements KeyListener {
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public void windowOpened(WindowEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void windowClosing(WindowEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void windowClosed(WindowEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void windowIconified(WindowEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void windowDeiconified(WindowEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void windowActivated(WindowEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void windowDeactivated(WindowEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

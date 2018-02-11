@@ -52,17 +52,27 @@ public class Room {
 		return name;
 	}
 
-	public ArrayList<String> search() {
+	public ArrayList<String> search(Room r) {
 		ArrayList<String> found = new ArrayList<>();
 		int d20 = ThreadLocalRandom.current().nextInt(20) + 1;
-		if (roomInv.length > 0) {
+		if (r.roomInv.length > 0) {
 			if (d20 > 5) {
-				found.add(roomInv[0]);
+				found.add(r.roomInv[0]);
 			}
 		}
-		if (roomInv.length > 1) {
+		if (r.roomInv.length > 1) {
 			if (d20 > 10) {
-				found.add(roomInv[1]);
+				found.add(r.roomInv[1]);
+			}
+		}
+		if (r.roomInv.length > 2) {
+			if (d20 > 15) {
+				found.add(r.roomInv[2]);
+			}
+		}
+		if (r.roomInv.length > 3) {
+			if (d20 > 19) {
+				found.add(r.roomInv[3]);
 			}
 		}
 		return found;
