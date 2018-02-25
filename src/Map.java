@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 public class Map {
 	Room northwesternForest=new Room();
@@ -26,30 +27,54 @@ public class Map {
 	Room swamp=new Room();
 	Room plague=new Room();
 	Room guardHouse=new Room();
-	
+	Food berries= new Food("berries", 10, 10, 0);
+	ArrayList<Item> northWesternForestItemsList= new ArrayList<Item>();
+	ArrayList<Item> southWesternForestItemsList= new ArrayList<Item>();
+	ArrayList<Item> northEasternForestItemsList= new ArrayList<Item>();
+	ArrayList<Item> southEasternForestItemsList= new ArrayList<Item>();
+	ArrayList<Item> westernCanyonList= new ArrayList<Item>();
+	ArrayList<Item> easternCanyonList= new ArrayList<Item>();
+	ArrayList<Item> altarList= new ArrayList<Item>();
+	ArrayList<Item> nsRoadOneList= new ArrayList<Item>();
+	ArrayList<Item> nsRoadTwoList= new ArrayList<Item>();
+	ArrayList<Item> easternFieldList= new ArrayList<Item>();
+	ArrayList<Item> westernFieldList= new ArrayList<Item>();
+	ArrayList<Item> crossroadsList= new ArrayList<Item>();
+	ArrayList<Item> ewRoadOneList= new ArrayList<Item>();
+	ArrayList<Item> ewRoadTwoList= new ArrayList<Item>();
+	ArrayList<Item> bridgeList= new ArrayList<Item>();
+	ArrayList<Item> riverList= new ArrayList<Item>();
+	ArrayList<Item> commonQuarterList= new ArrayList<Item>();
+	ArrayList<Item> merchantQuarterList= new ArrayList<Item>();
+	ArrayList<Item> magicQuarterList= new ArrayList<Item>();
+	ArrayList<Item> nobleQuarterList= new ArrayList<Item>();
+	ArrayList<Item> forestTempleEntryList= new ArrayList<Item>();
+	ArrayList<Item> canyonTempleEntryList= new ArrayList<Item>();
+	ArrayList<Item> waterTempleEntryList= new ArrayList<Item>();
 	void setUp() {
-		northwesternForest.setFields("Forest!", westernField, nsRoadOne, southwesternForest, forestTempleEntry, new String[] { "berries", "squirrel", "deer","locked box" });
-		southwesternForest.setFields("Forest!!", northwesternForest, altar, westernCanyon, forestTempleEntry, new String[] { "berries", "squirrel", "deer" });
-		northeasternForest.setFields("Forest!!!", easternField, forestTempleEntry, southeasternForest, nsRoadOne, new String[] { "berries", "squirrel", "deer" });
-		southeasternForest.setFields("Forest!!!!", northeasternForest, forestTempleEntry, easternCanyon, altar, new String[] { "berries", "squirrel", "deer" });
-		westernCanyon.setFields("Canyon", southwesternForest, canyonTempleEntry, null, easternCanyon, new String[] {});
-		easternCanyon.setFields("Canyon", southeasternForest, westernCanyon, null, canyonTempleEntry, new String[] {});
-		altar.setFields("In front of you there is a small marble platform with a raised marble slab. On the slab there appear to be 4 indents as if once 4 small objects had been there. Engraved in the stone it reads: \"Here is the true resting spot of the elemental artifacts.\"", nsRoadOne, southeasternForest, null, southwesternForest, new String[] {});
-		nsRoadOne.setFields("North/South King's Road", nsRoadTwo, northeasternForest, altar, northwesternForest, new String[] {});
-		nsRoadTwo.setFields("North/South King's Road", crossroads, easternField, nsRoadOne, westernField, new String[] {});
-		easternField.setFields("Field", null, westernField, northeasternForest, nsRoadTwo, new String[] { "Corn" });
-		westernField.setFields("Field", null, nsRoadTwo, northwesternForest, easternField, new String[] { "Corn" });
-		crossroads.setFields("King's Cross", commonQuarter, ewRoadTwo, nsRoadTwo, ewRoadOne, new String[] {});
-		ewRoadOne.setFields("East/West King's Road", null, crossroads, null, crossroads, new String[] {});
-		ewRoadTwo.setFields("East/West King's Road", null, swamp, null, crossroads, new String[] {});
-		bridge.setFields("River Bridge", null, ewRoadOne, river, plague, new String[] {});
-		river.setFields("River", bridge, null, waterTempleEntry, null, new String[] {});
-		commonQuarter.setFields("Common Quarter", nobleQuarter, magicQuarter, crossroads, merchantQuarter, new String[] {});
-		merchantQuarter.setFields("Merchant's Quarter", nobleQuarter, magicQuarter, commonQuarter, null, new String[] {});
-		magicQuarter.setFields("Arcane Quarter", nobleQuarter, null, commonQuarter, magicQuarter, new String[] {});
-		nobleQuarter.setFields("Noble Quarter", guardHouse, magicQuarter, commonQuarter, merchantQuarter, new String[] {});
-		forestTempleEntry.setFields("Forest Temple", null, northwesternForest, null, northeasternForest, new String[] {});
-		canyonTempleEntry.setFields("Canyon Temple", null, easternCanyon, null, westernCanyon, new String[] {});
-		waterTempleEntry.setFields("Water Temple", river, null, null, null, new String[] {});
+		northwesternForest.setFields("You are in a pine forest you can see the light filtering down through the trees. To the west you see a imposing door carved into a immense redwood tree, and to the north there are fields and fields of corn. There is only more forest to the south, and to the east lies a road.", westernField, nsRoadOne, southwesternForest, forestTempleEntry, new String[] { "berries", "squirrel", "deer","locked box" }, northWesternForestItemsList);
+		northWesternForestItemsList.add(berries);
+		southwesternForest.setFields("You are in a pine forest you can see the light filtering down through the trees.", northwesternForest, altar, westernCanyon, forestTempleEntry, new String[] { "berries", "squirrel", "deer" }, southWesternForestItemsList);
+		northeasternForest.setFields("Forest", easternField, forestTempleEntry, southeasternForest, nsRoadOne, new String[] { "berries", "squirrel", "deer" }, northEasternForestItemsList);
+		southeasternForest.setFields("Forest", northeasternForest, forestTempleEntry, easternCanyon, altar, new String[] { "berries", "squirrel", "deer" }, southEasternForestItemsList);
+		westernCanyon.setFields("Canyon", southwesternForest, canyonTempleEntry, null, easternCanyon, new String[] {}, westernCanyonList);
+		easternCanyon.setFields("Canyon", southeasternForest, westernCanyon, null, canyonTempleEntry, new String[] {}, easternCanyonList);
+		altar.setFields("In front of you there is a small marble platform with a raised marble slab. On the slab there appear to be 4 indents as if once 4 small objects had been there. Engraved in the stone it reads: \"Here is the true resting spot of the elemental artifacts.\"", nsRoadOne, southeasternForest, null, southwesternForest, new String[] {}, altarList);
+		nsRoadOne.setFields("North/South King's Road", nsRoadTwo, northeasternForest, altar, northwesternForest, new String[] {}, nsRoadOneList);
+		nsRoadTwo.setFields("North/South King's Road", crossroads, easternField, nsRoadOne, westernField, new String[] {}, nsRoadTwoList);
+		easternField.setFields("Field", null, westernField, northeasternForest, nsRoadTwo, new String[] { "corn" }, easternFieldList);
+		westernField.setFields("Field", null, nsRoadTwo, northwesternForest, easternField, new String[] { "corn" }, westernFieldList);
+		crossroads.setFields("King's Cross", commonQuarter, ewRoadTwo, nsRoadTwo, ewRoadOne, new String[] {}, crossroadsList);
+		ewRoadOne.setFields("East/West King's Road", null, crossroads, null, crossroads, new String[] {}, ewRoadOneList);
+		ewRoadTwo.setFields("East/West King's Road", null, swamp, null, crossroads, new String[] {}, ewRoadTwoList);
+		bridge.setFields("River Bridge", null, ewRoadOne, river, plague, new String[] {}, bridgeList);
+		river.setFields("River", bridge, null, waterTempleEntry, null, new String[] {}, riverList);
+		commonQuarter.setFields("Common Quarter", nobleQuarter, magicQuarter, crossroads, merchantQuarter, new String[] {}, commonQuarterList);
+		merchantQuarter.setFields("Merchant's Quarter", nobleQuarter, magicQuarter, commonQuarter, null, new String[] {}, merchantQuarterList);
+		magicQuarter.setFields("Arcane Quarter", nobleQuarter, null, commonQuarter, magicQuarter, new String[] {}, magicQuarterList);
+		nobleQuarter.setFields("Noble Quarter", guardHouse, magicQuarter, commonQuarter, merchantQuarter, new String[] {}, nobleQuarterList);
+		forestTempleEntry.setFields("Forest Temple", null, northwesternForest, null, northeasternForest, new String[] {}, forestTempleEntryList);
+		canyonTempleEntry.setFields("Canyon Temple", null, easternCanyon, null, westernCanyon, new String[] {}, canyonTempleEntryList);
+		waterTempleEntry.setFields("Water Temple", river, null, null, null, new String[] {}, waterTempleEntryList);
 	}
 }

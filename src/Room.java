@@ -10,11 +10,11 @@ public class Room {
 	Room south;
 	Room west;
 	String[] roomInv = new String[0];
-
+	ArrayList<Item> roomInv2= new ArrayList <Item>();;
 	public Room() {
 	}
 
-	public Room(String Name, Room North, Room East, Room South, Room West, String[] RoomInv) {
+	public Room(String Name, Room North, Room East, Room South, Room West, String[] RoomInv, ArrayList<Item> roomInv2) {
 		name = Name;
 		north = North;
 		east = East;
@@ -39,13 +39,14 @@ public class Room {
 		return west;
 	}
 
-	public void setFields(String Name, Room North, Room East, Room South, Room West, String[] RoomInv) {
+	public void setFields(String Name, Room North, Room East, Room South, Room West, String[] RoomInv, ArrayList<Item> RoomInv2) {
 		name = Name;
 		north = North;
 		east = East;
 		south = South;
 		west = West;
 		roomInv = RoomInv;
+		roomInv2 = RoomInv2;
 	}
 
 	public String readDesc() {
