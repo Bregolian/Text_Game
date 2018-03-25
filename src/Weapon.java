@@ -4,6 +4,17 @@ public class Weapon extends Item{
 	int dmgBonus;
 	String name;
 	 public Weapon( String name, int hitBonus, int dmgBonus, int buyValue, int sellValue) {
-		 super(buyValue, sellValue);
+		 super(name, buyValue, sellValue);
+		 this.dmgBonus=dmgBonus;
+		 this.hitBonus=hitBonus;
+		 this.name=name;
 	 }
+	 public int getHitBonus() {
+		return hitBonus;
+		 
+	 }
+	 public int getDmgBonus() {
+			return dmgBonus;
+			 
+		 }
 }

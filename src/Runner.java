@@ -5,9 +5,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
-
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -40,7 +38,7 @@ public class Runner implements KeyListener, WindowListener {
 				GridBagConstraints.NONE, new Insets(5, 2, 5, 2), 0, 0);
 		jFrame.addWindowListener(this);
 		jPanel.setLayout(new GridBagLayout());
-		jFrame.setDefaultCloseOperation(jFrame.EXIT_ON_CLOSE);
+		jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		jTextArea.setText("Welcome to the game. What is your name?\n");
 		jTextArea.setEditable(false);
 		jTextArea.setWrapStyleWord(true);
@@ -61,8 +59,11 @@ public class Runner implements KeyListener, WindowListener {
 		jTextField.addKeyListener(this);
 		jTextField.requestFocus();
 		map.setUp();
-		player = new Player(map.altar);
+		Inventory inven= new Inventory();
+		Armor clothArmor=new Armor("Cloth Armor", 1, 10, 0);
+		player = new Player(map.altar, inven.startItems2, 100, clothArmor);
 		p = new Parser(player);
+		
 	}
 
 	@Override

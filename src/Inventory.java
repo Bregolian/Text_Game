@@ -1,14 +1,18 @@
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Inventory {
 	int money = 0;
 	int score = 0;
-	String name = "";
-	String[] items = new String[20];
-
+	
+	ArrayList<String> items;
+	ArrayList<String> startItems=items;
+	Armor clothArmor =new Armor("Cloth Armor", 1, 10, 0);
+	Weapon rustyShortSword = new Weapon("Rusty Short-Sword", 2, 4, 30, 15);
+	ArrayList<Item> startItems2=new ArrayList<Item> (Arrays.asList(clothArmor, rustyShortSword));
 	public Inventory() {
 
 	}
-
 	public int getMoney() {
 		return money;
 	}
@@ -17,24 +21,24 @@ public class Inventory {
 		this.money = money;
 	}
 
-	public String[] getItems() {
+	public ArrayList<String> getItems() {
 		return items;
 	}
 
-	public String getInventory() {
-		String finalWord = "";
-		for (int i = 0; i < items.length; i++) {
-			if (items[i] != null) {
-				finalWord += items[i] + ", ";
+	public ArrayList<String> getInventory() {
+		ArrayList<String> finalWord= new ArrayList<String>();
+		
+			for (String s:items) {
+				finalWord.add(s);
 			}
-		}
+		
 		return finalWord;
 	}
 
 	public int findItem(String item) {
 		int itemLocation = -1;
-		for (int i = 0; i < items.length; i++) {
-			if (items[i] != null && items[i].equalsIgnoreCase(item)) {
+		for (int i = 0; i < items.size(); i++) {
+			if (items.get(i) != null && items.get(i).equalsIgnoreCase(item)) {
 				itemLocation = i;
 			}
 		}
@@ -43,13 +47,13 @@ public class Inventory {
 
 	public String deleteItem(int location) {
 		String removedItem;
-		removedItem = items[location];
-		items[location] = null;
+		removedItem = items.get(location);
+		items.remove(items.get(location)) ;
 		return removedItem;
 	}
 
 	public void setItem(String item, int location) {
-		items[location] = item;
+		items.add(item) ;
 	}
 
 	public int getScore() {
@@ -60,11 +64,4 @@ public class Inventory {
 		this.score = score;
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
 }
